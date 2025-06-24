@@ -5,13 +5,37 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
+  Alert,
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
+const usersDB = [
+  { username: 'anjal', password: '1234' },
+  { username: 'faiq', password: '1234' },
+  { username: 'brandon', password: '1234' },
+  { username: 'choi', password: '1234' },
+  { username: 'nao', password: '1234' },
+  { username: 'yarik', password: '1234' },
+  { username: 'niko', password: '1234' },
+];
 
-function LoginScreen(props) {
+function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    const userFound = usersDB.find(
+      user => user.username === username && user.password === password
+    );
+
+    if (userFound) {
+      Alert.alert('Login Success', `Welcome back, ${username}!`);
+      // Pass the username to MainTabs
+      navigation.replace('MainTabs', { username: username });
+    } else {
+      Alert.alert('Login Failed', 'Invalid username or password');
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -41,7 +65,7 @@ function LoginScreen(props) {
         />
       </View>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Log in</Text>
       </TouchableOpacity>
 
@@ -126,6 +150,4 @@ const styles = StyleSheet.create({
   },
 });
 
-
-export default LoginScreen
-;
+export default LoginScreen;
