@@ -15,10 +15,12 @@ import { useFriends } from './FriendsContext'; // Import our custom hook
 
 // Define your bot accounts
 const botAccounts = [
-  { id: 'bot1', name: 'ChatBot Mark' },
-  { id: 'bot2', name: 'AI Assistant Emily' },
-  { id: 'bot3', name: 'InfoBot Alex' },
-  { id: 'bot4', name: 'Helper Jane' },
+  { id: 'bot1', name: 'Brandon' },//////////////changed this only the name *********************************
+  { id: 'bot2', name: 'Anjal' },
+  { id: 'bot3', name: 'Yarik' },
+  { id: 'bot4', name: 'Faiq' },
+  { id: 'bot5', name: 'Nao' },
+  { id: 'bot6', name: 'Choi' },
 ];
 
 export default function AddFriendsScreen() {
@@ -40,7 +42,7 @@ export default function AddFriendsScreen() {
     const isAlreadyAdded = friends.some(friend => friend.id === item.id);
     return (
       <View style={styles.botItem}>
-        <Ionicons name="robot-outline" size={40} color="#6A0DAD" />
+        <Ionicons name="person" size={40} color="#6A0DAD" />
         <Text style={styles.botName}>{item.name}</Text>
         <TouchableOpacity
           style={[styles.addButton, isAlreadyAdded && styles.addedButton]}
