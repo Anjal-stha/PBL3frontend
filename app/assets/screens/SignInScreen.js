@@ -43,6 +43,10 @@ function SignInScreen({ navigation }) {
       console.log("username: "+username+" password: "+password) //this prints the user name and password into the console.
     }
   };
+  const handelBack = () => {
+    navigation.replace('Login');
+    
+  };
 
   return (
     <View style={styles.container}>
@@ -75,6 +79,17 @@ function SignInScreen({ navigation }) {
       <TouchableOpacity style={styles.button} onPress={handleSignIn}>
         <Text style={styles.buttonText}>Sign In</Text>
       </TouchableOpacity>
+
+      
+      <View style={styles.divider}>
+            <View style={styles.line} />
+            <Text style={styles.orText}>Or</Text>
+            <View style={styles.line} />
+        </View>
+      
+        <TouchableOpacity style={[styles.button, styles.signinButton]} onPress={handelBack}>
+            <Text style={styles.buttonText}>Back</Text>
+        </TouchableOpacity>
 
       
 
